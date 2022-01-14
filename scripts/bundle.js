@@ -24,7 +24,7 @@ function prepareFolders(dirs) {
 }
 
 async function run() {
-  const src = "./src2";
+  const src = "./src";
   const dist = "./dist";
   const tmp = "./.tmp";
   const jsPattern = "**/*.js";
