@@ -6,12 +6,13 @@
       //---- do not edit the following code (you can indent as you wish)
       let alphabet =
         "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
-      let randomHash = "0x";
+      const prefix = "red";
+      let randomHash = prefix;
       for (var i = 0; i < 64; i++) {
         randomHash += Math.floor(Math.random() * 16).toString(16);
       }
       const urlHash = new URLSearchParams(window.location.search).get("hash");
-      var fxhash = urlHash || randomHash;
+      var fxhash = urlHash ? prefix + urlHash : randomHash;
       let b58dec = (str) =>
         str
           .split("")
@@ -22,7 +23,7 @@
                 Math.pow(alphabet.length, str.length - i - 1),
             0
           );
-      let fxhashTrunc = fxhash.slice(2);
+      let fxhashTrunc = fxhash.slice(3);
       let regex = new RegExp(".{" + ((fxhash.length / 8) | 0) + "}", "g");
       let hashes = fxhashTrunc.match(regex).map((h) => b58dec(h));
       let sfc32 = (a, b, c, d) => {
