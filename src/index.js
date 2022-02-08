@@ -1,16 +1,6 @@
-function postArt(canvas) {
-  canvas.toBlob(
-    function (blob) {
-      const message = new File([blob], "art.png", { type: "image/png" });
-      const isIframe = !!window.parent;
-      if (isIframe) {
-        window.parent.postMessage(message, "*");
-      }
-    },
-    "image/png",
-    1
-  );
-}
+// these are the variables you can use as inputs to your algorithms
+console.log(clioHash); // the 64 chars hex number fed to your algorithm
+console.log(rand()); // deterministic PRNG function, use it instead of Math.random()
 
 function setup() {
   // draw code goes here

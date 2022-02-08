@@ -12,7 +12,7 @@
         randomHash += Math.floor(Math.random() * 16).toString(16);
       }
       const urlHash = new URLSearchParams(window.location.search).get("hash");
-      var fxhash = urlHash ? prefix + urlHash : randomHash;
+      var clioHash = urlHash ? prefix + urlHash : randomHash;
       let b58dec = (str) =>
         str
           .split("")
@@ -23,9 +23,9 @@
                 Math.pow(alphabet.length, str.length - i - 1),
             0
           );
-      let fxhashTrunc = fxhash.slice(3);
-      let regex = new RegExp(".{" + ((fxhash.length / 8) | 0) + "}", "g");
-      let hashes = fxhashTrunc.match(regex).map((h) => b58dec(h));
+      let clioHashTrunc = clioHash.slice(3);
+      let regex = new RegExp(".{" + ((clioHash.length / 8) | 0) + "}", "g");
+      let hashes = clioHashTrunc.match(regex).map((h) => b58dec(h));
       let sfc32 = (a, b, c, d) => {
         return () => {
           a |= 0;
@@ -41,7 +41,8 @@
           return (t >>> 0) / 4294967296;
         };
       };
-      var fxrand = sfc32(...hashes);
+      var rand = sfc32(...hashes);
+      clioHash = clioHashTrunc;
       //---- /do not edit the following code
     </script>
     <!-- if you need to change p5.js version do it here -->
@@ -50,6 +51,7 @@
   <body>
     <link rel="stylesheet" href="./style.css" />
     <!-- if you need to import js scripts do it here -->
+    <script src="./post-art.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>

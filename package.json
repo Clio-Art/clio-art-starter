@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Starter Repository to develop and test your code to be launched on the ClioArt.io Platform",
   "scripts": {
+    "start": "browser-sync src -w",
     "build": "node ./scripts/bundle.js"
   },
   "main": "index.js",
@@ -13,6 +14,7 @@
     "@node-minify/core": "^6.2.0",
     "@node-minify/google-closure-compiler": "^6.2.0",
     "@node-minify/html-minifier": "^6.2.0",
+    "browser-sync": "^2.27.7",
     "inline-scripts": "^1.7.4",
     "rimraf": "^3.0.2"
   }
